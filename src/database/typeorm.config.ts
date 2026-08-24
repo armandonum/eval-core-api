@@ -11,11 +11,10 @@ export const typeOrmConfigAsync = {
     username: configService.get<string>('DB_USERNAME'),
     password: String(configService.get('DB_PASSWORD') ?? ''),
     schema: 'auth',
-    autoLoadEntities: false,
+    autoLoadEntities: true,
     synchronize: false,
-    logging: true,
+    logging: false,
     migrationsRun: false,
-    entities: ['dist/**/*.entity.js'],
-    migrations: ['dist/migrations/*.js'],
+
   }),
 };
