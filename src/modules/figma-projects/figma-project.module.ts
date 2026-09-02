@@ -15,6 +15,7 @@ import { UpdateFigmaProjectUseCase } from './application/use-cases/update-figma-
 import { DeleteFigmaProjectUseCase } from './application/use-cases/delete-figma-project.use-case';
 import { FindFigmaProjectUseCase } from './application/use-cases/find-figma-project.use-case';
 import { FindAllFigmaProjectsUseCase } from './application/use-cases/find-all-figma-projects.use-case';
+import { FindFigmaProjectByCreatorUseCase } from './application/use-cases/find-figma-project-by-creator.use-cases';
 
 @Module({
   imports: [
@@ -44,6 +45,7 @@ import { FindAllFigmaProjectsUseCase } from './application/use-cases/find-all-fi
     DeleteFigmaProjectUseCase,
     FindFigmaProjectUseCase,
     FindAllFigmaProjectsUseCase,
+    FindFigmaProjectByCreatorUseCase,
   ],
 
   exports: [

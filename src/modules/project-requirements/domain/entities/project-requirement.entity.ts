@@ -2,6 +2,7 @@ export class ProjectRequirement {
   constructor(
     public readonly requirementId: string,
     public projectId: string,
+    public semesterId: string,
     public createdBy: string | null,
     public code: string,
     public title: string,

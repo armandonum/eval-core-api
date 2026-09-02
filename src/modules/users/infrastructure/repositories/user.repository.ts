@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Entity, Repository } from 'typeorm';
 import { IUserRepository } from '../../domain/interfaces/user-repository.interface';
 import { User } from '../../domain/entities/user.entity';
 import { UserTypeormEntity } from '../typeorm/user.typeorm-entity';
@@ -23,6 +23,8 @@ export class UserRepository implements IUserRepository {
 
     return orm ? UserMapper.toDomain(orm) : null;
   }
+
+
 
   async findByEmail(email: string): Promise<User | null> {
     const orm = await this.ormRepo.findOne({
@@ -65,5 +67,16 @@ export class UserRepository implements IUserRepository {
 
   async delete(id: string): Promise<void> {
     await this.ormRepo.delete(id);
+  }  
+  
+  async getByCreator(created_by: string): Promise<User[]> {
+    const orm = await this.ormRepo.find({
+      where: {created_by},
+      relations: {
+        roles: true,
+      },
+    });
+
+    return orm.map(UserMapper.toDomain)
   }
 }

@@ -25,6 +25,12 @@ export class ProjectRequirementTypeormEntity {
   projectId: string
 
   @Column({
+    name: 'semester_id',
+    type: 'uuid'
+  })
+  semesterId: string
+
+  @Column({
     name: 'created_by',
     type: 'uuid',
     nullable: true,

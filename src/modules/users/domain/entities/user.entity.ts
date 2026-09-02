@@ -6,7 +6,7 @@ import { UserStatus}  from '../value-objects/status.value-object';
 export class User {
   constructor(
     public readonly user_id: string | undefined,
-    public institution_id: string | undefined,
+    public created_by: string | undefined,
     private readonly email: Email ,
     public password_hash: string ,
     public display_name: string,

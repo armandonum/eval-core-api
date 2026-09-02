@@ -15,11 +15,11 @@ import type { UserStatus } from '../../domain/value-objects/status.value-object'
 export class CreateUserDto {
   @ApiPropertyOptional({
     example: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
-    description: 'ID de la institucion a la que pertenece el usuario',
+    description: 'ID del usuario creador',
   })
   @IsOptional()
   @IsString()
-  institution_id?: string;
+  created_by?: string;
 
   @ApiProperty({
     example: 'juan@example.com',

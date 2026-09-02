@@ -181847,9 +181847,9 @@
   },
   "name": "Escritorio.fig",
   "lastModified": "2026-07-08T02:34:42Z",
-  "thumbnailUrl": "https://s3-alpha.figma.com/thumbnails/f395821f-b85e-43fb-8684-b3e85caf3164?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWC2FGOZM5C%2F20260823%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260823T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=eaf672280157a31452a09044633aea622fa18df5d41412f5e155c3bbad7edcc8",
+  "thumbnailUrl": "https://s3-alpha.figma.com/thumbnails/f395821f-b85e-43fb-8684-b3e85caf3164?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWC3BAOQIQT%2F20260827%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260827T000000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=827f432fcc400064ba80e14bf84cae9832e520cd2795746db15cf34a42c17485",
   "version": "2373669872025651767",
-  "role": "owner",
+  "role": "viewer",
   "editorType": "figma",
   "linkAccess": "view"
 }

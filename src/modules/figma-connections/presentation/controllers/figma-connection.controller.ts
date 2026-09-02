@@ -49,6 +49,7 @@ export class FigmaConnectionController {
     @Param('id')
     id: string,
 
+    
     @Body()
     dto: UpdateFigmaConnectionDto,
   ): Promise<FigmaConnectionResponseDto> {

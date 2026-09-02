@@ -43,12 +43,14 @@ export class CreateFigmaProjectWithFileUseCase {
       );
 
     return this.createFigmaProjectUseCase.execute({
+      createdBy: dto.createdBy,
       fileKey: dto.fileKey,
       projectName: dto.projectName,
       lastModified: dto.lastModified,
       version: dto.version,
       thumbnailUrl: dto.thumbnailUrl,
       rawJsonPath,
+      semesterId: dto.semesterId,
     });
   }
 

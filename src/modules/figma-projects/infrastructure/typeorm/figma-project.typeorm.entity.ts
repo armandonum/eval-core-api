@@ -16,6 +16,9 @@ export class FigmaProjectTypeormEntity {
   project_id: string;
 
   @Column()
+  created_by: string;
+ 
+  @Column()
   file_key: string;
 
   @Column()
@@ -46,5 +49,10 @@ export class FigmaProjectTypeormEntity {
 
   @CreateDateColumn()
   created_at: Date;
+
+  @Column({
+    type: 'uuid',
+  })
+  semester_id: string;
 
 }

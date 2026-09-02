@@ -27,6 +27,7 @@ import { FindFigmaProjectUseCase } from '../../application/use-cases/find-figma-
 import { FindAllFigmaProjectsUseCase } from '../../application/use-cases/find-all-figma-projects.use-case';
 import { UpdateFigmaProjectUseCase } from '../../application/use-cases/update-figma-project.use-case';
 import { DeleteFigmaProjectUseCase } from '../../application/use-cases/delete-figma-project.use-case';
+import { FindFigmaProjectByCreatorUseCase } from '../../application/use-cases/find-figma-project-by-creator.use-cases';
 
 @Controller('figma-projects')
 export class FigmaProjectController {
@@ -36,6 +37,7 @@ export class FigmaProjectController {
     private readonly findAllUseCase: FindAllFigmaProjectsUseCase,
     private readonly updateUseCase: UpdateFigmaProjectUseCase,
     private readonly deleteUseCase: DeleteFigmaProjectUseCase,
+    private readonly findByCreatorUseCase: FindFigmaProjectByCreatorUseCase,
   ) {}
 @Post()
 @ApiOperation({
@@ -46,6 +48,10 @@ export class FigmaProjectController {
   schema: {
     type: 'object',
     properties: {
+      createdBy: {
+        type: 'string',
+        example: 'uuid',
+      },
       fileKey: {
         type: 'string',
         example: 'AbCdEF1234567890',
@@ -71,6 +77,10 @@ export class FigmaProjectController {
       file: {
         type: 'string',
         format: 'binary',
+      },
+      semesterId:{
+        type: 'string',
+        example: 'uu-id',
       },
     },
     required: [
@@ -114,6 +124,14 @@ async create(
     id: string,
   ) {
     return this.findUseCase.execute(id);
+  }
+
+   @Get('/creator/:id')
+  async findByCreator(
+    @Param('id')
+    id: string,
+  ) {
+    return this.findByCreatorUseCase.execute(id);
   }
 
   @Patch(':id')

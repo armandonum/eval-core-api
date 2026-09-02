@@ -9,6 +9,7 @@ export class FigmaProjectMapper {
 
     return new FigmaProject(
       orm.project_id,
+      orm.created_by,
       orm.file_key,
       orm.project_name,
       orm.last_modified,
@@ -16,6 +17,7 @@ export class FigmaProjectMapper {
       orm.thumbnail_url,
       orm.fetched_at,
       orm.raw_json_path,
+      orm.semester_id,
       orm.created_at,
     );
   }
@@ -27,6 +29,7 @@ export class FigmaProjectMapper {
     const orm = new FigmaProjectTypeormEntity();
 
     orm.project_id = domain.projectId;
+    orm.created_by = domain.createdBy;
     orm.file_key = domain.fileKey;
     orm.project_name = domain.projectName;
     orm.last_modified = domain.lastModified;
@@ -34,6 +37,7 @@ export class FigmaProjectMapper {
     orm.thumbnail_url = domain.thumbnailUrl ?? '';
     orm.fetched_at = domain.fetchedAt;
     orm.raw_json_path = domain.rawJsonPath;
+    orm.semester_id = domain.semesterId;
 
     return orm;
   }

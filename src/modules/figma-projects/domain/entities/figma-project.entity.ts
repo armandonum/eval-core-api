@@ -1,6 +1,7 @@
 export class FigmaProject {
   constructor(
     public readonly projectId: string,
+    public readonly createdBy: string,
 
     public fileKey: string,
 
@@ -16,7 +17,8 @@ export class FigmaProject {
 
     public rawJsonPath: string,
 
-
+    public semesterId: string,
+    
     public readonly createdAt: Date,
 
   ) {}

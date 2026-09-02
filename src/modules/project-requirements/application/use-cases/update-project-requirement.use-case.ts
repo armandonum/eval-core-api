@@ -7,11 +7,12 @@ import {
 import { ProjectRequirementRepository } from '../../domain/interfaces/project-requirement.repository'
 
 import { UpdateProjectRequirementDto } from '../dtos/update-project-requirement.dto'
+import { INJECTION_TOKENS } from 'src/shared/constants/injection-tokens'
 
 @Injectable()
 export class UpdateProjectRequirementUseCase {
   constructor(
-    @Inject(ProjectRequirementRepository)
+    @Inject(INJECTION_TOKENS.PROJECT_REQUIREMENTS)
     private readonly repository: ProjectRequirementRepository,
   ) {}
 

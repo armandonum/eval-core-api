@@ -43,6 +43,9 @@ import { CognitiveProblemModule } from './modules/cognitive-problem/cognitive-pr
 import { CognitiveDashboardModule } from './modules/cognitive-dashboard/cognitive-dashboard.module';
 import { CognitiveExportModule } from './modules/cognitive-export/cognitive-export.module';
 import { FindingsModule } from './modules/findings/findings.module';
+import { SemestersModule } from './modules/semesters/semesters.module';
+import { SemesterStudentsModule } from './modules/semester-students/semester-students.module';
+import { SemesterProjectsModule } from './modules/semester-projects/semester-projects.module';
 
 @Module({
   imports: [
@@ -101,6 +104,9 @@ import { FindingsModule } from './modules/findings/findings.module';
     CognitiveDashboardModule,
     CognitiveExportModule,
     FindingsModule,
+    SemestersModule,
+    SemesterStudentsModule,
+    SemesterProjectsModule,
 
     
   ],

@@ -9,6 +9,7 @@ export class ProjectRequirementMapper {
     return new ProjectRequirement(
       entity.requirementId,
       entity.projectId,
+      entity.semesterId,
       entity.createdBy,
       entity.code,
       entity.title,
@@ -26,6 +27,7 @@ export class ProjectRequirementMapper {
 
     orm.requirementId = entity.requirementId
     orm.projectId = entity.projectId
+    orm.semesterId = entity.semesterId
     orm.createdBy = entity.createdBy
     orm.code = entity.code
     orm.title = entity.title

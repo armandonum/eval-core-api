@@ -23,6 +23,7 @@ export class CreateFigmaProjectUseCase {
 
     const project = new FigmaProject(
       randomUUID(),
+      dto.createdBy,
       dto.fileKey,
       dto.projectName,
       new Date(dto.lastModified),
@@ -30,6 +31,7 @@ export class CreateFigmaProjectUseCase {
       dto.thumbnailUrl ?? null,
       now,
       dto.rawJsonPath,
+      dto.semesterId,
       now
     );
 

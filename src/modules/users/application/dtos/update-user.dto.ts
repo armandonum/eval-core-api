@@ -10,6 +10,22 @@ import { ApiPropertyOptional } from '@nestjs/swagger';
 import type { UserStatus } from '../../domain/value-objects/status.value-object';
 
 export class UpdateUserDto {
+
+   @ApiPropertyOptional({
+      example: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+      description: 'ID del usuario creador',
+    })
+    @IsOptional()
+    @IsString()
+    created_by?: string;
+  
+    @ApiPropertyOptional({
+      example: 'juan@example.com',
+      description: 'Correo electronico unico del usuario',
+    })
+    @IsString()
+    email?: string;
+
   @ApiPropertyOptional({
     example: 'Juan Perez',
     description: 'Nombre visible del usuario',
@@ -37,6 +53,5 @@ export class UpdateUserDto {
   })
   @IsOptional()
   @IsArray()
-  @IsUUID('4', { each: true })
   roleIds?: string[];
 }

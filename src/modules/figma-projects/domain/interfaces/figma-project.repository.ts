@@ -23,4 +23,8 @@ export interface FigmaProjectRepository {
   ): Promise<FigmaProject | null>;
 
   findAll(): Promise<FigmaProject[]>;
+
+  findByCreator(
+    created_by: string,
+  ): Promise<FigmaProject[] | null>;
 }

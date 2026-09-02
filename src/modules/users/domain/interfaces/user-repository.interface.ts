@@ -4,4 +4,5 @@ import { IBaseRepository } from '../../../../shared/interfaces/base-repository.i
 export interface IUserRepository extends IBaseRepository<User> {
   findByEmail(email: string): Promise<User | null>;
   existsByEmail(email: string): Promise<boolean>;
+  getByCreator( userId: string): Promise<User[]>;
 }

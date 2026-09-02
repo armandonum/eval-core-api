@@ -17,6 +17,7 @@ import { GetProjectRequirementUseCase } from '../../application/use-cases/get-pr
 import { GetProjectRequirementsUseCase } from '../../application/use-cases/get-project-requirements.use-case'
 import { GetProjectRequirementsByProjectUseCase } from '../../application/use-cases/get-project-requirements-by-project.use-case'
 import { UpdateProjectRequirementUseCase } from '../../application/use-cases/update-project-requirement.use-case'
+import { GetProjectRequirementsBySemesterUseCase } from '../../application/use-cases/get-project-requirement-by-semester.use-case'
 
 @Controller('project-requirements')
 export class ProjectRequirementsController {
@@ -27,6 +28,7 @@ export class ProjectRequirementsController {
     private readonly getUseCase: GetProjectRequirementUseCase,
     private readonly getAllUseCase: GetProjectRequirementsUseCase,
     private readonly getByProjectUseCase: GetProjectRequirementsByProjectUseCase,
+    private readonly getBySemesterUseCase: GetProjectRequirementsBySemesterUseCase,
   ) {}
 
   @Post()
@@ -76,6 +78,15 @@ export class ProjectRequirementsController {
   ) {
     return this.getByProjectUseCase.execute(
       projectId,
+    )
+  }
+  
+  @Get('semester/:semesterId')
+  findBySemester(
+    @Param('semesterId') semesterId: string,
+  ) {
+    return this.getBySemesterUseCase.execute(
+      semesterId,
     )
   }
 }

@@ -1,30 +1,32 @@
 import { ProjectRequirement } from '../entities/project-requirement.entity'
 
-export abstract class ProjectRequirementRepository {
-  abstract create(
+export interface  ProjectRequirementRepository {
+   create(
     requirement: ProjectRequirement,
   ): Promise<ProjectRequirement>
 
-  abstract update(
+   update(
     requirement: ProjectRequirement,
   ): Promise<ProjectRequirement>
 
-  abstract delete(
+   delete(
     requirementId: string,
   ): Promise<void>
 
-  abstract findById(
+   findById(
     requirementId: string,
   ): Promise<ProjectRequirement | null>
 
-  abstract findAll(): Promise<ProjectRequirement[]>
+   findAll(): Promise<ProjectRequirement[]>
 
-  abstract findByProject(
+   findByProject(
     projectId: string,
   ): Promise<ProjectRequirement[]>
 
-  abstract existsByCode(
-    projectId: string,
-    code: string,
-  ): Promise<boolean>
+  findBySemester( 
+    semesterId: string,
+  ): Promise<ProjectRequirement[]>
+
+  existsByCode(code: string, projectId?: string, semesterId?: string): Promise<boolean>
+
 }

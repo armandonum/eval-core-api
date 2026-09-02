@@ -9,6 +9,12 @@ import {
 } from 'class-validator';
 
 export class CreateFigmaProjectDto {
+@ApiProperty({
+  example: ' uuid'
+})
+@IsOptional()
+createdBy: string;
+
   @ApiProperty({
     description: 'File Key del proyecto en Figma',
     example: 'AbCdEF1234567890',
@@ -51,4 +57,10 @@ export class CreateFigmaProjectDto {
   })
   @IsString()
   rawJsonPath: string;
+
+  @ApiProperty({
+    example: ' uuíd',
+  })
+  @IsString()
+  semesterId: string
 }

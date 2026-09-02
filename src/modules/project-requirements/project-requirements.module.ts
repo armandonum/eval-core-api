@@ -11,9 +11,11 @@ import { GetProjectRequirementUseCase } from './application/use-cases/get-projec
 import { GetProjectRequirementsByProjectUseCase } from './application/use-cases/get-project-requirements-by-project.use-case'
 import { GetProjectRequirementsUseCase } from './application/use-cases/get-project-requirements.use-case'
 import { UpdateProjectRequirementUseCase } from './application/use-cases/update-project-requirement.use-case'
+import { GetProjectRequirementsBySemesterUseCase } from './application/use-cases/get-project-requirement-by-semester.use-case'
 
 import { ProjectRequirementRepositoryImpl } from './infrastructure/repositories/project-requirement.repository.impl'
 import { ProjectRequirementTypeormEntity } from './infrastructure/typeorm/project-requirement.typeorm.entity'
+import { INJECTION_TOKENS } from 'src/shared/constants/injection-tokens'
 
 @Module({
   imports: [
@@ -33,9 +35,10 @@ import { ProjectRequirementTypeormEntity } from './infrastructure/typeorm/projec
     GetProjectRequirementUseCase,
     GetProjectRequirementsUseCase,
     GetProjectRequirementsByProjectUseCase,
+    GetProjectRequirementsBySemesterUseCase,
 
     {
-      provide: ProjectRequirementRepository,
+      provide: INJECTION_TOKENS.PROJECT_REQUIREMENTS,
       useClass: ProjectRequirementRepositoryImpl,
     },
   ],
@@ -47,6 +50,7 @@ import { ProjectRequirementTypeormEntity } from './infrastructure/typeorm/projec
     GetProjectRequirementUseCase,
     GetProjectRequirementsUseCase,
     GetProjectRequirementsByProjectUseCase,
+    GetProjectRequirementsBySemesterUseCase,
   ],
 })
 export class ProjectRequirementsModule {}

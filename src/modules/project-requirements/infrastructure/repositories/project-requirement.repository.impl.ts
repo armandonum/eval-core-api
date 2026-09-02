@@ -22,9 +22,7 @@ export class ProjectRequirementRepositoryImpl
     requirement: ProjectRequirement,
   ): Promise<ProjectRequirement> {
     const entity = ProjectRequirementMapper.toPersistence(requirement)
-
     const saved = await this.repository.save(entity)
-
     return ProjectRequirementMapper.toDomain(saved)
   }
 
@@ -32,9 +30,7 @@ export class ProjectRequirementRepositoryImpl
     requirement: ProjectRequirement,
   ): Promise<ProjectRequirement> {
     const entity = ProjectRequirementMapper.toPersistence(requirement)
-
     const updated = await this.repository.save(entity)
-
     return ProjectRequirementMapper.toDomain(updated)
   }
 
@@ -85,17 +81,45 @@ export class ProjectRequirementRepositoryImpl
     return entities.map(ProjectRequirementMapper.toDomain)
   }
 
-  async existsByCode(
-    projectId: string,
-    code: string,
-  ): Promise<boolean> {
-    const count = await this.repository.count({
+  async findBySemester(
+    semesterId: string,
+  ): Promise<ProjectRequirement[]> {
+    const entities = await this.repository.find({
       where: {
-        projectId,
-        code,
+        semesterId,
+      },
+      order: {
+        code: 'ASC',
       },
     })
 
-    return count > 0
+    return entities.map(ProjectRequirementMapper.toDomain)
   }
+
+
+
+  async existsByCode(
+  code: string,
+  projectId?: string,
+  semesterId?: string,
+): Promise<boolean> {
+  if (!code) {
+    return false
+  }
+  
+  const where: any = { code }
+  
+  if (projectId) {
+    where.projectId = projectId
+  } 
+  else if (semesterId) {
+    where.semesterId = semesterId
+  }
+
+  const count = await this.repository.count({
+    where,
+  })
+
+  return count > 0
+}
 }

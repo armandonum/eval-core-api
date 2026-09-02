@@ -14,8 +14,14 @@ export class CreateProjectRequirementDto {
   @ApiProperty({
     example: 'uuid'
   })
-  @IsUUID()
+  @IsOptional()
   projectId: string
+
+  @ApiProperty({
+    example: 'uuid'
+  })
+  @IsOptional()
+  semesterId: string
 
   @ApiProperty({
     example:'uuid'
@@ -45,5 +51,6 @@ export class CreateProjectRequirementDto {
     example: 'esto debe cumplirse para que el requerimineto sea aceptado'
   })
   @IsString()
+  @IsOptional()
   acceptanceCriteria?: string
 }

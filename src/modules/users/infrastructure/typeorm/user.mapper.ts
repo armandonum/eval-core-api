@@ -10,7 +10,7 @@ export class UserMapper {
     // (id, institutionId, email, passwordHash, displayName, status, last_login_at, roles, createdAt, updatedAt)
     return new User(
       orm.user_id,
-      orm.institution_id,
+      orm.created_by,
       new Email(orm.email!),
       orm.password_hash ?? '',
       orm.display_name ?? '',
@@ -27,7 +27,7 @@ static toOrm(domain: User): UserTypeormEntity {
 
   if (domain.user_id) orm.user_id = domain.user_id;
 
-  orm.institution_id = domain.institution_id;
+  orm.created_by = domain.created_by;
   orm.email = domain._email;
   orm.password_hash = domain.password_hash;
   orm.display_name = domain.display_name;

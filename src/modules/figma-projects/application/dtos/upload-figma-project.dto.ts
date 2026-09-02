@@ -6,6 +6,7 @@ import {
   IsDateString,
   IsOptional,
   IsString,
+  IsUUID,
 } from 'class-validator';
 
 /**
@@ -15,6 +16,14 @@ import {
  * después de guardar el archivo subido.
  */
 export class UploadFigmaProjectDto {
+
+  @ApiProperty({
+  example: ' uuid'
+})
+@IsOptional()
+createdBy: string;
+
+
   @ApiProperty({
     description: 'File Key del proyecto en Figma',
     example: 'AbCdEF1234567890',
@@ -50,4 +59,11 @@ export class UploadFigmaProjectDto {
   @IsOptional()
   @IsString()
   thumbnailUrl?: string;
+
+   @ApiProperty({
+    example: ' uuíd',
+  })
+  @IsOptional()
+  @IsUUID()
+  semesterId?: string;
 }

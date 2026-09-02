@@ -4,6 +4,8 @@ export class ProjectRequirementResponseDto {
 
   projectId: string
 
+  semesterId: string
+
   createdBy: string | null
 
   code: string

@@ -78,6 +78,23 @@ export class FigmaProjectRepositoryImpl
     return FigmaProjectMapper.toDomain(orm);
   }
 
+    async findByCreator(
+    created_by: string,
+  ): Promise<FigmaProject[] | null> {
+    const orm =
+      await this.repository.find({
+        where: {
+          created_by: created_by,
+        },
+      });
+
+    if (!orm) {
+      return null;
+    }
+
+    return orm.map(FigmaProjectMapper.toDomain)
+  }
+
   async findByFileKey(
     fileKey: string,
   ): Promise<FigmaProject | null> {

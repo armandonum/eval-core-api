@@ -15,8 +15,8 @@ export class UserTypeormEntity {
   @PrimaryGeneratedColumn('uuid')
   user_id?: string;
 
-  @Column({ name: 'institution_id', nullable: true })
-  institution_id?: string;
+  @Column({ name: 'created_by', nullable: true })
+  created_by?: string;
 
   @Column({ unique: true, length: 255 })
   email?: string;

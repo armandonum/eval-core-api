@@ -37,7 +37,7 @@ const email = new Email(dto.email)
     //    (id, institutionId, email, passwordHash, displayName, status, lastLoginAt, roles, createdAt, updatedAt)
     const user = new User(
       uuid(),
-      dto.institution_id,
+      dto.created_by,
       email,
       passwordHash,
       dto.displayName ?? dto.email.split('@')[0],  // fallback si no viene displayName
@@ -49,7 +49,6 @@ const email = new Email(dto.email)
       
     );
 
-    console.log("lo que al final se manda es lo sigueinte:" , user)
     
     return this.userRepository.save(user);
   }

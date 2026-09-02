@@ -35,7 +35,7 @@ export class RolesController {
   ) {}
 
   @Post()
-  @Roles('Administrador')
+  @Roles('Administrador','Docente','Coordinador')
   create(@Body() dto: CreateRoleDto) {
     return this.createRole.execute(dto);
   }
@@ -47,7 +47,7 @@ export class RolesController {
   }
 
   @Patch(':id')
-  @Roles('Administrador')
+  @Roles('Administrador','Docente','Coordinador')
   update(
     @Param('id', ParseUUIDPipe) id: string,
     @Body() dto: UpdateRoleDto,
@@ -56,7 +56,7 @@ export class RolesController {
   }
 
   @Delete(':id')
-  @Roles('Administrador')
+  @Roles('Administrador','Docente','Coordinador')
   @HttpCode(HttpStatus.NO_CONTENT)
   remove(@Param('id', ParseUUIDPipe) id: string) {
     return this.deleteRole.execute(id);

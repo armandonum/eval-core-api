@@ -28,6 +28,7 @@ import { GetUsersUseCase } from '../../application/use-cases/get-users.use-case'
 import { GetUserByIdUseCase } from '../../application/use-cases/get-user-by-id.use-case';
 import { UpdateUserUseCase } from '../../application/use-cases/update-user.use-case';
 import { DeleteUserUseCase } from '../../application/use-cases/delete-user.use-case';
+import { GetUsersByCreatorUseCase } from '../../application/use-cases/get-by-creator.use-case';
 import { CreateUserDto } from '../../application/dtos/create-user.dto';
 import { UpdateUserDto } from '../../application/dtos/update-user.dto';
 
@@ -42,6 +43,7 @@ export class UsersController {
     private readonly getUserById: GetUserByIdUseCase,
     private readonly updateUser: UpdateUserUseCase,
     private readonly deleteUser: DeleteUserUseCase,
+    private readonly getByCreator: GetUsersByCreatorUseCase,
   ) {}
 
   // ─── POST /api/users ───────────────────────────────────────────────────────
@@ -123,10 +125,22 @@ export class UsersController {
     return this.getUserById.execute(id);
   }
 
+    @Get('/creator/:userId')
+  @Roles('Administrador','Docente','Coordinador')
+  @ApiOperation({
+    summary: 'Obtener usuario por ID',
+    description: 'Retorna el detalle de un usuario por UUID. Solo rol Administrador.',
+  })
+  @ApiParam({ name: 'userId', description: 'UUID del usuario', example: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890' })
+
+  findByCreator(@Param('userId', ParseUUIDPipe) userId: string) {
+    return this.getByCreator.execute(userId);
+  }
+
   // ─── PATCH /api/users/:id ──────────────────────────────────────────────────
 
   @Patch(':id')
-  @Roles('Administrador')
+  @Roles('Administrador','Docente','Coordinador')
   @ApiOperation({
     summary: 'Actualizar usuario',
     description:
