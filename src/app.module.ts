@@ -46,6 +46,16 @@ import { FindingsModule } from './modules/findings/findings.module';
 import { SemestersModule } from './modules/semesters/semesters.module';
 import { SemesterStudentsModule } from './modules/semester-students/semester-students.module';
 import { SemesterProjectsModule } from './modules/semester-projects/semester-projects.module';
+import { HeuristicFrameworksModule } from './modules/heuristic-frameworks/heuristic-frameworks.module';
+import { HeuristicPrinciplesModule } from './modules/heuristic-principles/heuristic-principles.module';
+import { HeuristicEvaluationsModule } from './modules/heuristic-evaluations/heuristic-evaluations.module';
+import { HeuristicEvaluatorsModule } from './modules/heuristic-evaluators/heuristic-evaluators.module';
+import { HeuristicTasksModule } from './modules/heuristic-tasks/heuristic-tasks.module';
+import { HeuristicObservationsModule } from './modules/heuristic-observations/heuristic-observations.module';
+import { HeuristicPositiveAspectsModule } from './modules/heuristic-positive-aspects/heuristic-positive-aspects.module';
+import { HeuristicRatingsModule } from './modules/heuristic-ratings/heuristic-ratings.module';
+import { HeuristicFinalResultsModule } from './modules/heuristic-final-results/heuristic-final-results.module';
+import { HeuristicTaskProgressModule } from './modules/heuristic-task-progress/heuristic-task-progress.module';
 
 @Module({
   imports: [
@@ -107,6 +117,18 @@ import { SemesterProjectsModule } from './modules/semester-projects/semester-pro
     SemestersModule,
     SemesterStudentsModule,
     SemesterProjectsModule,
+
+    HeuristicFrameworksModule,
+    HeuristicPrinciplesModule,
+    HeuristicEvaluationsModule,
+    HeuristicEvaluatorsModule,
+    HeuristicTasksModule,
+    HeuristicObservationsModule,
+    HeuristicPositiveAspectsModule,
+    HeuristicRatingsModule,
+    HeuristicFinalResultsModule,
+    HeuristicTaskProgressModule,
+
 
     
   ],

@@ -39,7 +39,6 @@ export class TaskController {
     @Body()
     dto: CreateTaskDto,
   ) {
-    console.log(" los que estamos creando :", dto)
     return this.createUseCase.execute(dto);
   }
 
