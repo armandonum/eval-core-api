@@ -85,8 +85,8 @@ export class UsabilitySessionController {
     @UploadedFile() file: Multer.File,
     @Body() dto: UploadVideoDto,
   ) {
-    console.log('BODY:', dto);
-    console.log('FILE:', file);
+    // console.log('BODY:', dto);
+    // console.log('FILE:', file);
 
     if (!file) {
       throw new BadRequestException('No se recibió ningún archivo');

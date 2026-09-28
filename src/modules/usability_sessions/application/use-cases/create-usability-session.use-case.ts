@@ -38,7 +38,7 @@ export class CreateUsabilitySessionUseCase {
       
     );
     
-            console.log("la session se madnad lo sigueint :" , dto)
+            
 
 
     return this.repository.create(session);

@@ -56,25 +56,26 @@ import { HeuristicPositiveAspectsModule } from './modules/heuristic-positive-asp
 import { HeuristicRatingsModule } from './modules/heuristic-ratings/heuristic-ratings.module';
 import { HeuristicFinalResultsModule } from './modules/heuristic-final-results/heuristic-final-results.module';
 import { HeuristicTaskProgressModule } from './modules/heuristic-task-progress/heuristic-task-progress.module';
+import { GazeEventsModule } from './modules/gaze-events/gaze-events.module';
+import { AoiDefinitionsModule } from './modules/aoi-definitions/aoi-definitions.module';
+import { GazeAoiMetricsModule } from './modules/gaze-aoi-metrics/gaze-aoi-metrics.module';
+import { ReportsModule } from './modules/reports/reports.module';
 
 @Module({
   imports: [
-    // ─── Configuración Global ──────────────────────────────────────────────
     ConfigModule.forRoot({
       isGlobal: true,
       load: [appConfig, databaseConfig],
     }),
     
-    // ─── Base de Datos ─────────────────────────────────────────────────────
     TypeOrmModule.forRootAsync(typeOrmConfigAsync),
     
-    // ─── Archivos Estáticos (Videos, imágenes, etc.) ──────────────────────
     ServeStaticModule.forRoot({
-      rootPath: join(process.cwd(), 'storage'), // ✅ Usa process.cwd() en lugar de __dirname
+      rootPath: join(process.cwd(), 'storage'), 
       serveRoot: '/storage',
       serveStaticOptions: {
-        index: false, // ✅ Desactivar index.html
-        fallthrough: false, // ✅ No buscar index.html si no existe
+        index: false, 
+        fallthrough: false, 
       },
     }),
     
@@ -128,6 +129,16 @@ import { HeuristicTaskProgressModule } from './modules/heuristic-task-progress/h
     HeuristicRatingsModule,
     HeuristicFinalResultsModule,
     HeuristicTaskProgressModule,
+
+    // mapas de calor eye traking 
+    GazeEventsModule,
+    AoiDefinitionsModule,
+    GazeAoiMetricsModule,
+
+
+    // reportes 
+    ReportsModule,
+    
 
 
     
