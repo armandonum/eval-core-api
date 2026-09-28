@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, Index } from 'typeorm';
-import { UsabilitySessionTypeormEntity } from 'src/modules/usability_sessions/infrastructure/typeorm/usability-session.typeorm.entity';
+import { UsabilitySessionTypeormEntity } from '../../../usability_sessions/infrastructure/typeorm/usability-session.typeorm.entity';
 @Entity('gaze_aoi_metrics', { schema: 'usability' })
 @Index('idx_gaze_aoi_session', ['session_id'])
 @Index('idx_gaze_aoi_name', ['aoi_name'])
