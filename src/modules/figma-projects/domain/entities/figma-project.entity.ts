@@ -20,6 +20,7 @@ export class FigmaProject {
     public semesterId: string,
     
     public readonly createdAt: Date,
+    public  publicUrl: string,
 
   ) {}
 
@@ -29,7 +30,8 @@ export class FigmaProject {
     lastModified: Date,
     version: string,
     thumbnailUrl: string | null,
-    rawJsonPath: string
+    rawJsonPath: string,
+    publicUrl: string
   ) {
     this.fileKey = fileKey;
     this.projectName = projectName;
@@ -37,6 +39,7 @@ export class FigmaProject {
     this.version = version;
     this.thumbnailUrl = thumbnailUrl;
     this.rawJsonPath = rawJsonPath;
+    this.publicUrl = publicUrl;
 
     this.fetchedAt = new Date();
   }

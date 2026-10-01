@@ -55,4 +55,10 @@ export class FigmaProjectTypeormEntity {
   })
   semester_id: string;
 
+  
+    @Column({
+    type: 'text',
+  })
+  public_url: string;
+
 }

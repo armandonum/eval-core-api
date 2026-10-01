@@ -19,6 +19,7 @@ export class FigmaProjectMapper {
       orm.raw_json_path,
       orm.semester_id,
       orm.created_at,
+      orm.public_url,
     );
   }
 
@@ -38,6 +39,7 @@ export class FigmaProjectMapper {
     orm.fetched_at = domain.fetchedAt;
     orm.raw_json_path = domain.rawJsonPath;
     orm.semester_id = domain.semesterId;
+    orm.public_url = domain.publicUrl;
 
     return orm;
   }

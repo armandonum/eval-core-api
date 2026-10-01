@@ -32,7 +32,8 @@ export class CreateFigmaProjectUseCase {
       now,
       dto.rawJsonPath,
       dto.semesterId,
-      now
+      now,
+      dto.publicUrl,
     );
 
     return this.repository.create(project);

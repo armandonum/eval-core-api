@@ -63,4 +63,10 @@ createdBy: string;
   })
   @IsString()
   semesterId: string
+
+  @ApiProperty({
+  example: 'https://www.figma.com/design/cS8FVtr5wErDejQDgioLxL/grupo3.fig?node-id=164-1239&t=P6Ep7oN9Ivhm3Dp8-0 '
+})
+@IsOptional()
+publicUrl: string;
 }

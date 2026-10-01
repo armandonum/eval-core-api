@@ -21,7 +21,7 @@ export class UpdateEvaluationStatusUseCase {
 
     // Validar transiciones de estado
     const validTransitions: Record<string, string[]> = {
-      draft: ['planning', 'archived'],
+      draft: ['planning', 'archived','in_progress'],
       planning: ['in_progress', 'draft', 'archived'],
       in_progress: ['completed', 'archived'],
       completed: ['archived'],

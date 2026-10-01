@@ -39,6 +39,7 @@ export class UpdateFigmaProjectUseCase {
       dto.version ?? project.version,
       dto.thumbnailUrl ?? project.thumbnailUrl,
       dto.rawJsonPath ?? project.rawJsonPath,
+      dto.publicUrl ?? project.publicUrl,
     );
 
     return this.repository.update(project);

@@ -51,6 +51,7 @@ export class CreateFigmaProjectWithFileUseCase {
       thumbnailUrl: dto.thumbnailUrl,
       rawJsonPath,
       semesterId: dto.semesterId,
+      publicUrl: dto.publicUrl,
     });
   }
 
