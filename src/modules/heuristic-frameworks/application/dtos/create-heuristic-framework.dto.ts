@@ -1,4 +1,4 @@
-import { IsString, IsOptional, IsInt, Min, Max, IsNotEmpty } from 'class-validator';
+import {  IsBoolean, IsString, IsOptional, IsInt, Min, Max, IsNotEmpty } from 'class-validator';
 
 export class CreateHeuristicFrameworkDto {
   @IsString()
@@ -18,4 +18,9 @@ export class CreateHeuristicFrameworkDto {
   @Max(2100)
   @IsOptional()
   year?: number;
+
+
+    @IsBoolean()
+    @IsOptional()
+    isActive?: boolean;
 }

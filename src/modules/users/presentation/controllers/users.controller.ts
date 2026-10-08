@@ -81,7 +81,7 @@ export class UsersController {
   // ─── GET /api/users ────────────────────────────────────────────────────────
 
   @Get()
-  @Roles('Administrador', 'Docente', 'Coordinador')
+  // @Roles('Administrador', 'Docente', 'Coordinador')
   @ApiOperation({
     summary: 'Listar usuarios',
     description: 'Retorna todos los usuarios del sistema. .',

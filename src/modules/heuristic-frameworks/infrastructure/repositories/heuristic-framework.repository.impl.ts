@@ -21,7 +21,7 @@ export class HeuristicFrameworkRepositoryImpl implements HeuristicFrameworkRepos
 
   async findAll(): Promise<HeuristicFramework[]> {
     const frameworks = await this.repository.find({
-      where: { is_active: true },
+
       order: { name: 'ASC' },
     });
     return frameworks.map(HeuristicFrameworkMapper.toDomain);

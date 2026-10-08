@@ -1,4 +1,4 @@
-import { IsString, IsOptional, IsInt, IsNotEmpty, IsUUID, Min } from 'class-validator';
+import { IsBoolean, IsString, IsOptional, IsInt, IsNotEmpty, IsUUID, Min } from 'class-validator';
 
 export class CreateHeuristicPrincipleDto {
   @IsUUID()
@@ -20,4 +20,8 @@ export class CreateHeuristicPrincipleDto {
   @IsInt()
   @Min(1)
   orderIndex: number;
+
+   @IsBoolean()
+    @IsOptional()
+    isActive?: boolean;
 }

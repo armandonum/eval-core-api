@@ -8,6 +8,7 @@ import {
   Max,
   MaxLength,
 } from 'class-validator';
+import { EvaluationStatus } from '../../domain/entities/heuristic-evaluation.entity';
 
 export class CreateHeuristicEvaluationDto {
   @IsUUID()
@@ -44,4 +45,7 @@ export class CreateHeuristicEvaluationDto {
   @Max(180)
   @IsOptional()
   maxDurationMinutes?: number;
+
+  @IsOptional()
+    status: EvaluationStatus;
 }

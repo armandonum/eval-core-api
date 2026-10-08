@@ -1501,19 +1501,19 @@
                           "strokeType": "BASIC"
                         }
                       },
-                      {
-                        "id": "1:72",
-                        "name": "Button",
-                        "type": "INSTANCE",
-                        "scrollBehavior": "SCROLLS",
-                        "componentId": "1:7",
-                        "componentProperties": {
-                          "Property 1": {
-                            "value": "Colored",
-                            "type": "VARIANT",
-                            "boundVariables": {}
-                          }
-                        },
+                        {
+                          "id": "1:72",
+                          "name": "Button",
+                          "type": "INSTANCE",
+                          "scrollBehavior": "SCROLLS",
+                          "componentId": "1:7",
+                          "componentProperties": {
+                            "Property 1": {
+                              "value": "Colored",
+                              "type": "VARIANT",
+                              "boundVariables": {}
+                            }
+                          },
                         "overrides": [
                           {
                             "id": "1:72",
