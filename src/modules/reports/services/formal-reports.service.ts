@@ -256,38 +256,41 @@ export class ReportsService {
   // ============================================================
   // n) Sentimientos + hallazgo vinculado
   // ============================================================
-  async getSentimentsWithFindings(projectId: string) {
-    const query = `
-      SELECT
-        ts.sentiment_id,
-        ts.text AS user_comment,
-        ts.ux_label AS sentiment_label,
-        ts.confidence,
-        ts.elapsed_ms_total,
-        CASE
-          WHEN ts.ux_label = 'Confusión' THEN 'Comprensión'
-          WHEN ts.ux_label = 'Frustración' THEN 'Dificultad'
-          WHEN ts.ux_label = 'Desconfianza' THEN 'Confianza / Feedback'
-          WHEN ts.ux_label = 'Dificultad / esfuerzo' THEN 'Visibilidad'
-          WHEN ts.ux_label = 'Satisfacción' THEN 'Organización visual'
-          WHEN ts.ux_label = 'Interés / motivación' THEN 'Motivación'
-          ELSE 'General'
-        END AS ux_topic,
-        -- Hallazgo vinculado (si existe)
-        f.finding_id,
-        f.description AS finding_description,
-        f.severity AS finding_severity,
-        f.type AS finding_type
-      FROM usability.text_sentiments ts
-      LEFT JOIN usability.findings f ON f.user_comment_id = ts.sentiment_id
-      JOIN usability.usability_sessions s ON s.session_id = ts.session_id
-      WHERE s.project_id = $1
-        AND ts.ux_label <> 'Neutral'
-      ORDER BY ts.elapsed_ms_total;
-    `
-    return this.dataSource.query(query, [projectId])
-  }
+ 
 
+async getSentimentsWithFindings(projectId: string) {
+  const query = `
+    SELECT
+      ts.sentiment_id,
+      ts.text AS user_comment,
+      ts.ux_label AS sentiment_label,
+      ts.confidence,
+      ts.elapsed_ms_total,
+      CASE
+        WHEN ts.ux_label = 'Confusión' THEN 'Comprensión'
+        WHEN ts.ux_label = 'Frustración' THEN 'Dificultad'
+        WHEN ts.ux_label = 'Desconfianza' THEN 'Confianza / Feedback'
+        WHEN ts.ux_label = 'Dificultad / esfuerzo' THEN 'Visibilidad'
+        WHEN ts.ux_label = 'Satisfacción' THEN 'Organización visual'
+        WHEN ts.ux_label = 'Interés / motivación' THEN 'Motivación'
+        ELSE 'General'
+      END AS ux_topic,
+      -- Hallazgo vinculado (si existe)
+      f.finding_id,
+      f.description AS finding_description,
+      f.severity AS finding_severity,
+      f.type AS finding_type
+    FROM usability.text_sentiments ts
+    LEFT JOIN usability.findings f 
+      ON f.user_comment_id = ts.sentiment_id     -- ✅ FIX: usar sentiment_id
+    JOIN usability.usability_sessions s 
+      ON s.session_id = ts.session_id
+    WHERE s.project_id = $1
+      AND ts.ux_label <> 'Neutral'
+    ORDER BY ts.elapsed_ms_total;
+  `
+  return this.dataSource.query(query, [projectId])
+}
   // ============================================================
   // m2) Comentarios de expertos
   // ============================================================

@@ -16,6 +16,9 @@ import {
 import {
   HeuristicEvaluationRepository,
 } from '../../../heuristic-evaluations/domain/interfaces/heuristic-evaluation.repository';
+import { INJECTION_TOKENS } from 'src/shared/constants/injection-tokens';
+
+import { UsabilitySessionRepository } from '../../../usability_sessions/domain/interfaces/usability-session.repository';
 
 /**
  * Algoritmo I-DT (Identification by Dispersion Threshold)
@@ -32,7 +35,7 @@ interface Fixation {
 
 @Injectable()
 export class CalculateAoiMetricsUseCase {
-  private readonly DISPERSION_THRESHOLD = 0.03; // 3% de dispersión
+  private readonly DISPERSION_THRESHOLD = 0.05; // 5% de dispersión
   private readonly MIN_FIXATION_DURATION_MS = 100; // Mínimo 100ms para ser fijación
 
   constructor(
@@ -42,6 +45,8 @@ export class CalculateAoiMetricsUseCase {
     private readonly gazeRepository: GazeEventRepository,
     @Inject(AOI_DEFINITION_REPOSITORY)
     private readonly aoiRepository: AoiDefinitionRepository,
+    @Inject(INJECTION_TOKENS.USABILITY_SESSION_REPOSITORY)
+    private readonly sessionRepository:UsabilitySessionRepository,
   ) {}
 
   async execute(dto: CalculateAoiMetricsDto): Promise<{
@@ -68,7 +73,9 @@ export class CalculateAoiMetricsUseCase {
     // 3. Obtener los AOIs de la sesión
     // Necesitamos el projectId del cual viene la sesión
     // Por simplicidad, cargamos todos los AOIs que correspondan por node_id
-    const allAois = await this.aoiRepository.findAll();
+    const session = await this.sessionRepository.findById(dto.sessionId);
+const allAois = await this.aoiRepository.findByProject(session.proyectId);
+
 
     // 4. Para cada AOI, calcular métricas  
     const metrics: GazeAoiMetric[] = [];

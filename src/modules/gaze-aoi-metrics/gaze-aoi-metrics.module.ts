@@ -15,6 +15,7 @@ import { DeleteGazeAoiMetricUseCase } from './application/use-cases/delete-gaze-
 // 🔥 Importar módulos de dependencias
 import { GazeEventsModule } from '../gaze-events/gaze-events.module';
 import { AoiDefinitionsModule } from '../aoi-definitions/aoi-definitions.module';
+import { UsabilitySessionModule } from '../usability_sessions/usability-session.module'; 
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { AoiDefinitionsModule } from '../aoi-definitions/aoi-definitions.module'
     // 🔥 Necesitamos los repositorios de gaze_events y aoi_definitions
     GazeEventsModule,
     AoiDefinitionsModule,
+     UsabilitySessionModule, 
   ],
   controllers: [GazeAoiMetricController],
   providers: [
