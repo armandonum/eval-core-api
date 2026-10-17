@@ -39,6 +39,15 @@ export class HeuristicTaskProgress {
   changeStatus(newStatus: TaskProgressStatus, sessionId?: string): void {
     const now = new Date();
 
+    // Si el estado no cambia, la operación es idempotente.
+    if (this.status === newStatus) {
+      if (sessionId !== undefined) {
+        this.sessionId = sessionId;
+      }
+      this.updatedAt = now;
+      return;
+    }
+
     // Validar transiciones válidas
     const validTransitions: Record<TaskProgressStatus, TaskProgressStatus[]> = {
       pending: ['in_progress', 'completed', 'failed'],
